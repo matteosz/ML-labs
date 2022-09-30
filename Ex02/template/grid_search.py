@@ -1,19 +1,14 @@
 # -*- coding: utf-8 -*-
-"""Exercise 2.
-
-Grid Search
-"""
+"""Grid Search"""
 
 import numpy as np
 from costs import compute_loss
-
 
 def generate_w(num_intervals):
     """Generate a grid of values for w0 and w1."""
     w0 = np.linspace(-100, 200, num_intervals)
     w1 = np.linspace(-150, 150, num_intervals)
     return w0, w1
-
 
 def get_best_parameters(w0, w1, losses):
     """Get the best w from the result of grid search."""

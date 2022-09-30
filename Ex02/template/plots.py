@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 """function for plot."""
+
 import matplotlib.pyplot as plt
 import numpy as np
 from grid_search import get_best_parameters
-
 
 def prediction(w0, w1, mean_x, std_x):
     """Get the regression line from the model."""
     x = np.arange(1.2, 2, 0.01)
     x_normalized = (x - mean_x) / std_x
     return x, w0 + w1 * x_normalized
-
 
 def base_visualization(grid_losses, w0_list, w1_list,
                        mean_x, std_x, height, weight):
@@ -39,7 +38,6 @@ def base_visualization(grid_losses, w0_list, w1_list,
 
     return fig
 
-
 def grid_visualization(grid_losses, w0_list, w1_list,
                        mean_x, std_x, height, weight):
     """Visualize how the trained model looks like under the grid search."""
@@ -54,7 +52,6 @@ def grid_visualization(grid_losses, w0_list, w1_list,
     ax2.plot(x, f, 'r')
 
     return fig
-
 
 def gradient_descent_visualization(
         gradient_losses, gradient_ws,

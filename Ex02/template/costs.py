@@ -3,6 +3,14 @@
 
 import numpy as np
 
+class InvalidLossFunction(Exception):
+    print("The loss function inserted hasn't been implemented")
+
+def mse(e): # Mean Squared Error
+    return .5 * np.mean(e**2)
+
+def mae(e): # Mean Absolute Error
+    return np.mean(np.abs(e))
 
 def compute_loss(y, tx, w, mod='MSE'):
     """Calculate the loss using either MSE or MAE.
@@ -19,7 +27,9 @@ def compute_loss(y, tx, w, mod='MSE'):
     e = y - np.dot(tx, w)
     
     if mod == 'MSE': 
-        return 0.5/len(y) * np.dot(e.T, e)
+        return mse(e)
     
     if mod == 'MAE': 
-        return 1/len(y) * np.sum(np.abs(e), axis=0)
+        return mae(e)
+    
+    raise InvalidLossFunction
