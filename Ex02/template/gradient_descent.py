@@ -5,7 +5,7 @@ import numpy as np
 from costs import compute_loss
 
 def compute_gradient(y, tx, w):
-    """Computes the gradient at w.
+    """Computes the gradient at w for MSE.
 
     Args:
         y: shape=(N, )
@@ -16,7 +16,7 @@ def compute_gradient(y, tx, w):
         An array of shape (2, ) (same shape as w), containing the gradient of the loss at w.
     """
     e = y - np.dot(tx, w)
-    return (-1/len(y) * np.dot(tx.T,e))
+    return -1/len(y) * np.dot(tx.T,e)
 
 
 def gradient_descent(y, tx, initial_w, max_iters, gamma):

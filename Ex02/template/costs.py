@@ -9,6 +9,10 @@ def mse(e): # Mean Squared Error
 def mae(e): # Mean Absolute Error
     return np.mean(np.abs(e))
 
+def custom(y,e):
+    ty = np.reciprocal(np.square(y))+np.finfo(float).eps
+    return np.mean(np.square(e) * ty)
+
 def compute_loss(y, tx, w, mod='mse'):
     """Calculate the loss using either MSE or MAE.
 
@@ -29,5 +33,8 @@ def compute_loss(y, tx, w, mod='mse'):
     elif mod == 'mae': 
         return mae(e)
     
+    elif mod == 'custom':
+        return custom(y,e)
+
     else: 
         print("The loss function inserted hasn't been implemented")
